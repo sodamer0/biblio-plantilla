@@ -3,14 +3,16 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Main {
-    //static ArrayList<Autor> autores = new ArrayList<>();
-    //static ArrayList<Libro> libros = new ArrayList<>();
-    //static ArrayList<Revista> revistas = new ArrayList<>();
+
+    //public static Scanner teclado = new Scanner(System.in);
+    static ArrayList<Autor> autores = new ArrayList<>();
+    static ArrayList<Libro> libros = new ArrayList<>();
+    static ArrayList<Revista> revistas = new ArrayList<>();
 
     public static void main(String[] args) {
         // ----------------IMPORTANTE-------------------:
         // Cuando tengas las clases creadas descomenta las lineas de arriba (inicialización de arrays)
-        // y el método createBD();
+        // y el metodo createBD();
         createBD();
         start();
     }
@@ -26,13 +28,15 @@ public class Main {
             System.out.println("\n\t4. Asignar autor a libro.\t\t0. Exit.");
             System.out.println("\n**************************************************************************");
 
-            Scanner scanner = new Scanner(System.in);
+            Scanner teclado = new Scanner(System.in);
             try {
 
                 int choice = scanner.nextInt();
                 switch (choice) {
                     case 1:
-
+                      //Libro libro = new Libro();
+                      //System.out.println("Introduzca el título del libro: ");
+                      libro.setTitulo(teclado.nextLine());
                         break;
                     case 2:
 
@@ -69,7 +73,7 @@ public class Main {
     }
 
     public static void createBD(){
-        /*
+
         // =====================
         // AUTORES
         // =====================
@@ -178,6 +182,6 @@ public class Main {
 
         libro11.setAutor(autor6);
         libro12.setAutor(autor6);
-        */
+
     }
 }
