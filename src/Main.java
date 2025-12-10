@@ -21,56 +21,122 @@ public class Main {
     public static void start(){
         while(true) {
 
-            System.out.println("\n********************** Biblioteca *****************************");
-            System.out.println("\n\t1. Crear libro.\t\t\t\t\t5. Ver libros.");
-            System.out.println("\n\t2. Crear revista.\t\t\t\t6. Ver revistas.");
-            System.out.println("\n\t3. Crear autor.\t\t\t\t\t7. Ver libros de un autor.");
-            System.out.println("\n\t4. Asignar autor a libro.\t\t0. Exit.");
-            System.out.println("\n**************************************************************************");
+          System.out.println("\n********************** Biblioteca *****************************");
+          System.out.println("\n\t1. Crear libro.\t\t\t\t\t5. Ver libros.");
+          System.out.println("\n\t2. Crear revista.\t\t\t\t6. Ver revistas.");
+          System.out.println("\n\t3. Crear autor.\t\t\t\t\t7. Ver libros de un autor.");
+          System.out.println("\n\t4. Asignar autor a libro.\t\t0. Exit.");
+          System.out.println("\n**************************************************************************");
 
-            Scanner teclado = new Scanner(System.in);
-            try {
+          Scanner teclado = new Scanner(System.in);
+          try {
+            int choice = teclado.nextInt();
+            switch (choice) {
+              case 1: {
+                System.out.println("Introduzca el título: ");
+                String titulo = teclado.nextLine();
+                System.out.println("Introduzca el anho: ");
+                int anho = teclado.nextInt();
+                System.out.println("Introduzca el genero: ");
+                System.out.println("Introduzca un género (FICTION, FANTASY, SCIENCE_FICTION, HISTORY, TECHNOLOGY, BIOGRAPHY");
+                String entrada = teclado.nextLine().trim().toUpperCase();
+                Genero genero = null;
+                try {
+                  genero = Genero.valueOf(entrada);
+                  System.out.println("Has elegido: " + genero);
+                } catch (IllegalArgumentException e) {
+                  System.out.println("Género no válido. Por favor, elige entre FICTION, FANTASY, SCIENCE_FICTION, HISTORY, TECHNOLOGY, BIOGRAPHY.");
+                }
+                System.out.println("Introduzca el isbn: ");
+                String isbn = teclado.nextLine();
+                System.out.println("Introduzca el número de páginas: ");
+                int paginas = teclado.nextInt();
+                teclado.nextLine();
+                Libro libro = new Libro(titulo, anho, genero, isbn, paginas);
+                libros.add(libro);
+                System.out.println("Libro creado correctamente: " + libro);
+                break;
+              }
+              case 2: {
+                System.out.println("Introduzca el título: ");
+                String titulo = teclado.nextLine();
+                System.out.println("Introduzca el anho: ");
+                int anho = teclado.nextInt();
+                System.out.println("Introduzca el genero: ");
+                System.out.println("Introduzca un género (FICTION, FANTASY, SCIENCE_FICTION, HISTORY, TECHNOLOGY, BIOGRAPHY");
+                String entrada = teclado.nextLine().trim().toUpperCase();
+                Frecuencia frecuencia = null;
+                try {
+                  frecuencia = Frecuencia.valueOf(entrada);
+                  System.out.println("Has elegido: " + frecuencia);
+                } catch (IllegalArgumentException e) {
+                  System.out.println("Género no válido. Por favor, elige entre WEEKLY, MONTHLY, QUARTERLY, ANNUAL.");
+                }
+                System.out.println("Introduzca el número de la revista: ");
+                int numero = teclado.nextInt();
+                teclado.nextLine();
+                System.out.println("Introduzca una frecuencia (WEEKLY, MONTHLY, QUARTERLY, ANNUAL");
+                entrada = teclado.nextLine().trim().toUpperCase();
+                Genero genero = null;
+                try {
+                  genero = Genero.valueOf(entrada);
+                  System.out.println("Has elegido: " + genero);
+                } catch (IllegalArgumentException e) {
+                  System.out.println("Género no válido. Por favor, elige entre FICTION, FANTASY, SCIENCE_FICTION, HISTORY, TECHNOLOGY, BIOGRAPHY.");
+                }
+                Revista revista = new Revista(titulo, anho, genero, frecuencia, numero);
+                revistas.add(revista);
+                System.out.println("Libro creado correctamente: " + revista);
+                break;
+              }
+              case 3: {
+                System.out.println("Introduzca el id: ");
+                int id = teclado.nextInt();
+                teclado.nextLine();
+                System.out.println("Introduzca el nombre: ");
+                String nombre = teclado.nextLine();
+                System.out.println("Introduzca el apellido: ");
+                String apellido = teclado.nextLine();
+                Autor autor = new Autor(id, nombre, apellido);
+                autores.add(autor);
+                System.out.println("Autor creado correctamente: " + autor);
+                break;
+              }
+              case 4: {
+                System.out.println("Introduzca el título del libro: ");
+                String titulo = teclado.nextLine();
+                for (Libro libro : libros) {
+                  if (libro.getTitulo().equalsIgnoreCase(titulo)){
 
-                int choice = scanner.nextInt();
-                switch (choice) {
-                    case 1:
-                      //Libro libro = new Libro();
-                      //System.out.println("Introduzca el título del libro: ");
-                      libro.setTitulo(teclado.nextLine());
-                        break;
-                    case 2:
-
-                        break;
-                    case 3:
-
-                        break;
-                    case 4:
-
-                        break;
-                    case 5:
-
-                        break;
-                    case 6:
-
-                        break;
-                    case 7:
-
-                        break;
-                    case 0:
-                        System.out.println("Adios!");
-                        System.exit(0);
-                    default:
-                        System.err.println("[ERROR] Your option is incorrect!! Try again!!");
+                  }
                 }
 
-            } catch (InputMismatchException var2) {
-                System.err.println("[ERROR] You must type a number!!!");
-                scanner.next();
-            } catch (Exception var3) {
-                System.err.println(var3.getMessage());
+
+                break;
+              }
+              case 5:
+                break;
+              case 6:
+                break;
+              case 7:
+                break;
+              case 0:
+                System.out.println("Adios!");
+                System.exit(0);
+              default:
+                System.err.println("[ERROR] Your option is incorrect!! Try again!!");
+
+
             }
+          } catch(InputMismatchException var2){
+            System.err.println("[ERROR] You must type a number!!!");
+            teclado.next();
+          } catch(Exception var3) {
+            System.err.println(var3.getMessage());
+          }
         }
     }
+
 
     public static void createBD(){
 

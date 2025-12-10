@@ -48,5 +48,14 @@ public class Autor {
 
     libros.add(libro);
   }
+
+  @Override
+  public String toString() {
+    return "Autor{" +
+      "id=" + id +
+      ", nombre='" + nombre + '\'' +
+      ", apellido='" + apellido + '\'' +
+      '}';
+  }
 }
 

@@ -3,10 +3,6 @@ public class Libro extends Item {
   private int paginas;
   private Autor autor;
 
-  public Libro(){
-    super();
-
-  }
 
   public Libro(String titulo, int anho, Genero genero, String isbn, int paginas) {
     super(titulo, anho, genero);
